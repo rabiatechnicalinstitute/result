@@ -1,55 +1,15 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>Rabiya Technical Institute</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #f2f6ff;
-      text-align: center;
-    }
+<script>
+function verifyCertificate() {
+  var id = document.getElementById("certId").value;
 
-    header {
-      background: #003366;
-      color: white;
-      padding: 25px;
-      font-size: 28px;
-      font-weight: bold;
-    }
-
-    .box {
-      margin-top: 150px;
-    }
-
-    .btn {
-      background: #0066cc;
-      color: white;
-      padding: 15px 40px;
-      font-size: 22px;
-      text-decoration: none;
-      border-radius: 8px;
-      display: inline-block;
-    }
-
-    .btn:hover {
-      background: #004c99;
-    }
-  </style>
-</head>
-<body>
-
-  <header>
-    Rabiya Technical Institute
-  </header>
-
-  <div class="box">
-    <h2>Welcome to Rabiya Technical Institute</h2>
-
-    <a class="btn" href="shadab.pdf" target="_blank">
-      Verify Certificate
-    </a>
-  </div>
-
-</body>
-</html>
+  if(id === "12345") {
+    window.open("shadab.pdf", "_blank");
+  }
+  else if(id === "67890") {
+    window.open("ali.pdf", "_blank");
+  }
+  else {
+    alert("Invalid Certificate ID");
+  }
+}
+</script>
