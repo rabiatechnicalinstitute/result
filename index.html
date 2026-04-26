@@ -1,15 +1,50 @@
-<script>
-function verifyCertificate() {
-  var id = document.getElementById("certId").value;
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Certificate Verification</title>
+  <style>
+    body {
+      font-family: Arial;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #f4f4f4;
+    }
+    input {
+      padding: 10px;
+      width: 250px;
+      margin-bottom: 10px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: green;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
 
-  if(id === "12345") {
-    window.open("shadab.pdf", "_blank");
-  }
-  else if(id === "67890") {
-    window.open("ali.pdf", "_blank");
-  }
-  else {
-    alert("Invalid Certificate ID");
-  }
-}
-</script>
+<body>
+
+  <h2>Rabia Technical Institute</h2>
+  <p>Enter Certificate ID to Verify</p>
+
+  <input type="text" id="certId" placeholder="Enter Certificate ID">
+  <br>
+  <button onclick="verifyCertificate()">Verify Certificate</button>
+
+  <script>
+    function verifyCertificate() {
+      var id = document.getElementById("certId").value;
+
+      if(id === "12345") {
+        window.open("shadab.pdf", "_blank");
+      } else {
+        alert("Invalid Certificate ID");
+      }
+    }
+  </script>
+
+</body>
+</html>
