@@ -30,6 +30,7 @@
             margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
+            cursor: pointer;
         }
 
         nav a:hover {
@@ -46,6 +47,14 @@
             border-radius: 8px;
             box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
             margin-bottom: 20px;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
         }
 
         .courses-grid {
@@ -94,6 +103,7 @@
             width: 250px;
             border: 1px solid #ccc;
             border-radius: 5px;
+            margin-right: 10px;
         }
 
         button {
@@ -116,6 +126,29 @@
             border-radius: 5px;
         }
 
+        .contact-info {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid #27ae60;
+            margin-top: 20px;
+        }
+
+        .contact-info h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+
+        .contact-info p {
+            color: #555;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+
+        .contact-info strong {
+            color: #2c3e50;
+        }
+
         footer {
             background: #2c3e50;
             color: white;
@@ -128,63 +161,102 @@
 <body>
 
 <header>
-    <h1>Rabiya Technnical Institute</h1>
+    <h1>Rabiya Technical Institute</h1>
     <p>Quality Education & Certification</p>
 </header>
 
 <nav>
-    <a href="#">Home</a>
-    <a href="#courses">Courses</a>
-    <a href="#">About</a>
-    <a href="#">Contact</a>
+    <a onclick="showTab('home')">Home</a>
+    <a onclick="showTab('courses')">Courses</a>
+    <a onclick="showTab('verify')">Verify Results</a>
+    <a onclick="showTab('contact')">Contact Us</a>
 </nav>
 
 <div class="container">
 
-    <!-- About Section -->
-    <div class="card">
-        <h2>Welcome to Rabiya Technical Institute</h2>
-        <p>We provide professional training and certified courses to help students achieve their goals.</p>
+    <!-- Home Tab -->
+    <div id="home" class="tab-content active">
+        <div class="card">
+            <h2>Welcome to Rabiya Technical Institute</h2>
+            <p>We provide professional training and certified courses to help students achieve their goals. Our institute is committed to delivering high-quality education and certifications that prepare students for successful careers in technical fields.</p>
+            <p>With experienced faculty, modern infrastructure, and industry-relevant curriculum, we ensure that our students gain the skills and knowledge needed for professional excellence.</p>
+        </div>
     </div>
 
-    <!-- Courses Section -->
-    <div class="card" id="courses">
-        <h2>Our Courses</h2>
-        <p>Explore our comprehensive diploma programs designed to build expertise and career opportunities.</p>
-        
-        <div class="courses-grid">
-            <!-- Course 1 -->
-            <div class="course-card">
-                <h3>Diploma in Fire and Safety Engineering</h3>
-                <p>Learn advanced fire safety systems, emergency management, and protective equipment design. This program provides comprehensive knowledge in fire prevention, control systems, and occupational safety standards.</p>
-                <div class="course-duration">Duration: 3 Years</div>
-            </div>
+    <!-- Courses Tab -->
+    <div id="courses" class="tab-content">
+        <div class="card">
+            <h2>Our Courses</h2>
+            <p>Explore our comprehensive diploma programs designed to build expertise and career opportunities.</p>
+            
+            <div class="courses-grid">
+                <!-- Course 1 -->
+                <div class="course-card">
+                    <h3>Diploma in Fire and Safety Engineering</h3>
+                    <p>Learn advanced fire safety systems, emergency management, and protective equipment design. This program provides comprehensive knowledge in fire prevention, control systems, and occupational safety standards.</p>
+                    <div class="course-duration">Duration: 3 Years</div>
+                </div>
 
-            <!-- Course 2 -->
-            <div class="course-card">
-                <h3>Diploma in Mechanical Engineering</h3>
-                <p>Master mechanical systems, machine design, and manufacturing processes. Develop skills in thermodynamics, fluid mechanics, and mechanical maintenance across various industrial applications.</p>
-                <div class="course-duration">Duration: 3 Years</div>
-            </div>
+                <!-- Course 2 -->
+                <div class="course-card">
+                    <h3>Diploma in Mechanical Engineering</h3>
+                    <p>Master mechanical systems, machine design, and manufacturing processes. Develop skills in thermodynamics, fluid mechanics, and mechanical maintenance across various industrial applications.</p>
+                    <div class="course-duration">Duration: 3 Years</div>
+                </div>
 
-            <!-- Course 3 -->
-            <div class="course-card">
-                <h3>Diploma in Electrical and Electronics Engineering</h3>
-                <p>Explore electrical circuits, power systems, and electronic devices. Gain expertise in installation, maintenance, and troubleshooting of electrical and electronic equipment in industrial settings.</p>
-                <div class="course-duration">Duration: 3 Years</div>
+                <!-- Course 3 -->
+                <div class="course-card">
+                    <h3>Diploma in Electrical and Electronics Engineering</h3>
+                    <p>Explore electrical circuits, power systems, and electronic devices. Gain expertise in installation, maintenance, and troubleshooting of electrical and electronic equipment in industrial settings.</p>
+                    <div class="course-duration">Duration: 3 Years</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Certificate Verification -->
-    <div class="card">
-        <h2>Verify Certificate</h2>
-        <p>Enter your certificate number below:</p>
+    <!-- Verify Results Tab -->
+    <div id="verify" class="tab-content">
+        <div class="card">
+            <h2>Verify Certificate</h2>
+            <p>Enter your certificate number below to verify your certification:</p>
 
-        <input type="text" id="certNumber" placeholder="Enter Certificate Number">
-        <button onclick="checkResult()">Check Result</button>
+            <input type="text" id="certNumber" placeholder="Enter Certificate Number">
+            <button onclick="checkResult()">Verify Certificate</button>
 
-        <div id="result" class="result-box"></div>
+            <div id="result" class="result-box"></div>
+        </div>
+    </div>
+
+    <!-- Contact Us Tab -->
+    <div id="contact" class="tab-content">
+        <div class="card">
+            <h2>Contact Us</h2>
+            <p>Get in touch with Rabiya Technical Institute for admissions, inquiries, or support.</p>
+
+            <div class="contact-info">
+                <h3>📍 Our Location</h3>
+                <p>
+                    <strong>Rabia Technical Institute</strong><br>
+                    Kumar Basti, Mango<br>
+                    Jamshedpur, Jharkhand 831012<br>
+                    India
+                </p>
+            </div>
+
+            <div class="contact-info">
+                <h3>📧 Get in Touch</h3>
+                <p>
+                    For inquiries about admissions, courses, or certifications, please contact us at the address above or visit our office during business hours.
+                </p>
+            </div>
+
+            <div class="contact-info">
+                <h3>🏢 Institute Information</h3>
+                <p>
+                    Rabiya Technical Institute is dedicated to providing quality technical education and professional certifications to students seeking careers in engineering and safety fields.
+                </p>
+            </div>
+        </div>
     </div>
 
 </div>
@@ -231,25 +303,60 @@
         }
     };
 
+    function showTab(tabName) {
+        // Hide all tabs
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabContents.forEach(tab => {
+            tab.classList.remove('active');
+        });
+
+        // Show selected tab
+        const selectedTab = document.getElementById(tabName);
+        if (selectedTab) {
+            selectedTab.classList.add('active');
+        }
+
+        // Clear result box when switching tabs
+        const resultBox = document.getElementById('result');
+        if (resultBox) {
+            resultBox.innerHTML = '';
+        }
+    }
+
     function checkResult() {
         let certNumber = document.getElementById("certNumber").value.trim();
         let resultDiv = document.getElementById("result");
+
+        if (certNumber === '') {
+            resultDiv.innerHTML = `<p style="color:orange;">Please enter a certificate number</p>`;
+            return;
+        }
 
         if (certificates[certNumber]) {
             let data = certificates[certNumber];
 
             resultDiv.innerHTML = `
-                <h3>Result Found</h3>
+                <h3 style="color: #27ae60;">✓ Result Found</h3>
                 <p><strong>Name:</strong> ${data.name}</p>
                 <p><strong>Course:</strong> ${data.course}</p>
                 ${data.duration ? `<p><strong>Duration:</strong> ${data.duration}</p>` : ''}
                 <p><strong>Grade:</strong> ${data.grade}</p>
-                <p><strong>Status:</strong> ${data.status}</p>
+                <p><strong>Status:</strong> <span style="color: #27ae60; font-weight: bold;">${data.status}</span></p>
             `;
         } else {
-            resultDiv.innerHTML = `<p style="color:red;">Certificate not found</p>`;
+            resultDiv.innerHTML = `<p style="color:red;">❌ Certificate not found. Please check the certificate number and try again.</p>`;
         }
     }
+
+    // Allow Enter key to verify certificate
+    document.addEventListener('keypress', function(event) {
+        if (event.key === 'Enter') {
+            const certInput = document.getElementById("certNumber");
+            if (certInput && document.activeElement === certInput) {
+                checkResult();
+            }
+        }
+    });
 </script>
 
 </body>
