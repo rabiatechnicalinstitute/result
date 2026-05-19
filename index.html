@@ -137,6 +137,27 @@
             course: "Diploma in Mechanical",
             grade: "A+",
             status: "Pass"
+        },
+        "FSE001": {
+            name: "Student Name",
+            course: "Diploma in Fire and Safety Engineering",
+            duration: "3 years",
+            grade: "A",
+            status: "Pass"
+        },
+        "DME001": {
+            name: "Student Name",
+            course: "Diploma in Mechanical Engineering",
+            duration: "3 years",
+            grade: "A",
+            status: "Pass"
+        },
+        "DEE001": {
+            name: "Student Name",
+            course: "Diploma in Electrical and Electronics Engineering",
+            duration: "3 years",
+            grade: "A",
+            status: "Pass"
         }
     };
 
@@ -151,6 +172,7 @@
                 <h3>Result Found</h3>
                 <p><strong>Name:</strong> ${data.name}</p>
                 <p><strong>Course:</strong> ${data.course}</p>
+                ${data.duration ? `<p><strong>Duration:</strong> ${data.duration}</p>` : ''}
                 <p><strong>Grade:</strong> ${data.grade}</p>
                 <p><strong>Status:</strong> ${data.status}</p>
             `;
