@@ -48,6 +48,47 @@
             margin-bottom: 20px;
         }
 
+        .courses-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .course-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+            border-left: 5px solid #27ae60;
+            transition: transform 0.3s ease;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .course-card h3 {
+            color: #2c3e50;
+            margin-top: 0;
+        }
+
+        .course-card p {
+            color: #555;
+            margin: 10px 0;
+        }
+
+        .course-duration {
+            background: #27ae60;
+            color: white;
+            padding: 8px 12px;
+            border-radius: 5px;
+            display: inline-block;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
         input {
             padding: 10px;
             width: 250px;
@@ -93,7 +134,7 @@
 
 <nav>
     <a href="#">Home</a>
-    <a href="#">Courses</a>
+    <a href="#courses">Courses</a>
     <a href="#">About</a>
     <a href="#">Contact</a>
 </nav>
@@ -104,6 +145,35 @@
     <div class="card">
         <h2>Welcome to Rabiya Technical Institute</h2>
         <p>We provide professional training and certified courses to help students achieve their goals.</p>
+    </div>
+
+    <!-- Courses Section -->
+    <div class="card" id="courses">
+        <h2>Our Courses</h2>
+        <p>Explore our comprehensive diploma programs designed to build expertise and career opportunities.</p>
+        
+        <div class="courses-grid">
+            <!-- Course 1 -->
+            <div class="course-card">
+                <h3>Diploma in Fire and Safety Engineering</h3>
+                <p>Learn advanced fire safety systems, emergency management, and protective equipment design. This program provides comprehensive knowledge in fire prevention, control systems, and occupational safety standards.</p>
+                <div class="course-duration">Duration: 3 Years</div>
+            </div>
+
+            <!-- Course 2 -->
+            <div class="course-card">
+                <h3>Diploma in Mechanical Engineering</h3>
+                <p>Master mechanical systems, machine design, and manufacturing processes. Develop skills in thermodynamics, fluid mechanics, and mechanical maintenance across various industrial applications.</p>
+                <div class="course-duration">Duration: 3 Years</div>
+            </div>
+
+            <!-- Course 3 -->
+            <div class="course-card">
+                <h3>Diploma in Electrical and Electronics Engineering</h3>
+                <p>Explore electrical circuits, power systems, and electronic devices. Gain expertise in installation, maintenance, and troubleshooting of electrical and electronic equipment in industrial settings.</p>
+                <div class="course-duration">Duration: 3 Years</div>
+            </div>
+        </div>
     </div>
 
     <!-- Certificate Verification -->
