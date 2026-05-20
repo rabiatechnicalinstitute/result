@@ -372,6 +372,102 @@
             box-shadow: 0px 4px 15px rgba(0,0,0,0.2);
         }
 
+        .admin-section {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0px 2px 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+            border-top: 5px solid #e74c3c;
+        }
+
+        .admin-section h3 {
+            color: #1a2942;
+            margin-top: 0;
+        }
+
+        .form-group {
+            margin: 15px 0;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #1a2942;
+            font-weight: bold;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            box-sizing: border-box;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+        }
+
+        .btn-danger {
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+        }
+
+        .certificate-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .certificate-table th,
+        .certificate-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .certificate-table th {
+            background: #1a2942;
+            color: white;
+        }
+
+        .certificate-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .btn-edit,
+        .btn-delete {
+            padding: 6px 12px;
+            margin: 2px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .btn-edit {
+            background: #3498db;
+            color: white;
+        }
+
+        .btn-delete {
+            background: #e74c3c;
+            color: white;
+        }
+
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -392,6 +488,10 @@
             .institute-name h1 {
                 font-size: 1.8em;
             }
+
+            .btn-group {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
@@ -400,7 +500,7 @@
 <header>
     <div class="header-content">
         <div class="logo-section">
-            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #1a2942 0%, #34495e 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+            <div style="width: 120px; height: 120px; background: linear-gradient(135deg, #1a2942 0%, #34495e 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
                 <div style="text-align: center; color: white;">
                     <div style="font-size: 2.5em; font-weight: bold;">RTI</div>
                     <div style="font-size: 0.8em;">RABIA</div>
@@ -420,6 +520,7 @@
     <a onclick="showTab('courses')">Courses</a>
     <a onclick="showTab('facilities')">Facilities</a>
     <a onclick="showTab('verify')">Verify Results</a>
+    <a onclick="showTab('admin')">Admin Panel</a>
     <a onclick="showTab('contact')">Contact Us</a>
 </nav>
 
@@ -434,7 +535,7 @@
         <div class="card">
             <h2>Welcome to Rabia Technical Institute</h2>
             <p><strong>Building Skills. Shaping Futures.</strong></p>
-            <p>Rabia Technical Institute is dedicated to empowering students with quality education, practical training, and industry exposure. Established in 2010, we have been committed to delivering excellence in technical education and professional development.</p>
+            <p>Rabia Technical Institute is dedicated to empowering students with quality education, practical training, and industry exposure. Established in 2010, we have been committed to delivering excellence in technical education.</p>
             
             <h3>Our Mission</h3>
             <p>To provide comprehensive technical education that equips students with the knowledge, skills, and confidence needed to excel in their chosen careers and contribute meaningfully to society.</p>
@@ -491,7 +592,7 @@
                 <!-- Course 1 -->
                 <div class="course-card">
                     <h3>Diploma in Fire and Safety Engineering</h3>
-                    <p>Learn advanced fire safety systems, emergency management, and protective equipment design. This program provides comprehensive knowledge in fire prevention, control systems, and safety management.</p>
+                    <p>Learn advanced fire safety systems, emergency management, and protective equipment design. This program provides comprehensive knowledge in fire prevention, control systems and occupational safety.</p>
                     <p><strong>Key Topics:</strong></p>
                     <ul>
                         <li>Fire Prevention & Control Systems</li>
@@ -505,7 +606,7 @@
                 <!-- Course 2 -->
                 <div class="course-card">
                     <h3>Diploma in Mechanical Engineering</h3>
-                    <p>Master mechanical systems, machine design, and manufacturing processes. Develop skills in thermodynamics, fluid mechanics, and mechanical maintenance across various industrial applications.</p>
+                    <p>Master mechanical systems, machine design, and manufacturing processes. Develop skills in thermodynamics, fluid mechanics, and mechanical maintenance across various industries.</p>
                     <p><strong>Key Topics:</strong></p>
                     <ul>
                         <li>Machine Design & Analysis</li>
@@ -519,7 +620,7 @@
                 <!-- Course 3 -->
                 <div class="course-card">
                     <h3>Diploma in Electrical and Electronics Engineering</h3>
-                    <p>Explore electrical circuits, power systems, and electronic devices. Gain expertise in installation, maintenance, and troubleshooting of electrical and electronic equipment in industrial settings.</p>
+                    <p>Explore electrical circuits, power systems, and electronic devices. Gain expertise in installation, maintenance, and troubleshooting of electrical and electronic equipment.</p>
                     <p><strong>Key Topics:</strong></p>
                     <ul>
                         <li>Electrical Circuits & Power Systems</li>
@@ -613,6 +714,65 @@
         </div>
     </div>
 
+    <!-- Admin Panel Tab -->
+    <div id="admin" class="tab-content">
+        <div class="admin-section">
+            <h3>📋 Certificate Management - Admin Panel</h3>
+            <p><strong>Add, Edit, or Delete Certificates</strong></p>
+
+            <div class="form-group">
+                <label>Certificate Number</label>
+                <input type="text" id="adminCertNumber" placeholder="e.g., ABC123">
+            </div>
+
+            <div class="form-group">
+                <label>Student Name</label>
+                <input type="text" id="adminStudentName" placeholder="e.g., John Doe">
+            </div>
+
+            <div class="form-group">
+                <label>Course</label>
+                <input type="text" id="adminCourse" placeholder="e.g., Diploma in Mechanical Engineering">
+            </div>
+
+            <div class="form-group">
+                <label>Grade</label>
+                <input type="text" id="adminGrade" placeholder="e.g., A, A+, B">
+            </div>
+
+            <div class="form-group">
+                <label>Status</label>
+                <input type="text" id="adminStatus" placeholder="e.g., Pass, Passed in 2023">
+            </div>
+
+            <div class="form-group">
+                <label>Duration (Optional)</label>
+                <input type="text" id="adminDuration" placeholder="e.g., 3 years">
+            </div>
+
+            <div class="btn-group">
+                <button class="btn-primary" onclick="addCertificate()">➕ Add Certificate</button>
+                <button class="btn-danger" onclick="clearForm()">🗑️ Clear Form</button>
+            </div>
+
+            <h3 style="margin-top: 30px;">📊 All Certificates</h3>
+            <table class="certificate-table" id="certificateTable">
+                <thead>
+                    <tr>
+                        <th>Certificate #</th>
+                        <th>Student Name</th>
+                        <th>Course</th>
+                        <th>Grade</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody id="certificateList">
+                </tbody>
+            </table>
+        </div>
+    </div>
+
     <!-- Contact Us Tab -->
     <div id="contact" class="tab-content">
         <div class="card">
@@ -688,66 +848,203 @@
 </footer>
 
 <script>
-    // Dummy database (replace with real backend later)
-    const certificates = {
-        "ABC123": {
-            name: "Shadab Khan",
-            course: "CCTV Security",
-            grade: "A",
-            status: "Pass"
-        },
-        "DIP456": {
-            name: "Aftab Anwar",
-            course: "Diploma in Mechanical Engineering",
-            grade: "A+",
-            status: "Pass"
-        },
-        "CERT/DIP/300622": {
-            name: "Aftab Anwar",
-            course: "Diploma in Fire and Safety Engineering",
-            duration: "3 years",
-            grade: "A",
-            status: "Passed in 2023"
-        },
-        "CERT/DIP/300622": {
-            name: "Student Name",
-            course: "Diploma in Fire and safety Engineering",
-            duration: "3 years",
-            grade: "A",
-            status: "Passed in 2023"
-        },
-        "DEE001": {
-            name: "Student Name",
-            course: "Diploma in Electrical and Electronics Engineering",
-            duration: "3 years",
-            grade: "A",
-            status: "Pass"
+    // LocalStorage Database (persists across page reloads)
+    const STORAGE_KEY = 'rti_certificates';
+
+    // Initialize with sample data if empty
+    function initializeDatabase() {
+        if (!localStorage.getItem(STORAGE_KEY)) {
+            const initialData = {
+                "ABC123": {
+                    name: "Shadab Khan",
+                    course: "CCTV Security",
+                    grade: "A",
+                    status: "Pass"
+                },
+                "DIP456": {
+                    name: "Aftab Anwar",
+                    course: "Diploma in Mechanical Engineering",
+                    grade: "A+",
+                    status: "Pass"
+                },
+                "CERT/DIP/300622": {
+                    name: "Aftab Anwar",
+                    course: "Diploma in Fire and Safety Engineering",
+                    duration: "3 years",
+                    grade: "A",
+                    status: "Passed in 2023"
+                },
+                "DEE001": {
+                    name: "Student Name",
+                    course: "Diploma in Electrical and Electronics Engineering",
+                    duration: "3 years",
+                    grade: "A",
+                    status: "Pass"
+                }
+            };
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(initialData));
         }
-    };
-
-    function showTab(tabName) {
-        // Hide all tabs
-        const tabContents = document.querySelectorAll('.tab-content');
-        tabContents.forEach(tab => {
-            tab.classList.remove('active');
-        });
-
-        // Show selected tab
-        const selectedTab = document.getElementById(tabName);
-        if (selectedTab) {
-            selectedTab.classList.add('active');
-        }
-
-        // Clear result box when switching tabs
-        const resultBox = document.getElementById('result');
-        if (resultBox) {
-            resultBox.innerHTML = '';
-        }
-
-        // Scroll to top
-        window.scrollTo(0, 0);
     }
 
+    // Get all certificates from localStorage
+    function getCertificates() {
+        const data = localStorage.getItem(STORAGE_KEY);
+        return data ? JSON.parse(data) : {};
+    }
+
+    // Save certificates to localStorage
+    function saveCertificates(certificates) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(certificates));
+    }
+
+    // Add new certificate
+    function addCertificate() {
+        const certNumber = document.getElementById('adminCertNumber').value.trim();
+        const studentName = document.getElementById('adminStudentName').value.trim();
+        const course = document.getElementById('adminCourse').value.trim();
+        const grade = document.getElementById('adminGrade').value.trim();
+        const status = document.getElementById('adminStatus').value.trim();
+        const duration = document.getElementById('adminDuration').value.trim();
+
+        if (!certNumber || !studentName || !course || !grade || !status) {
+            alert('⚠️ Please fill in all required fields (Certificate Number, Student Name, Course, Grade, Status)');
+            return;
+        }
+
+        const certificates = getCertificates();
+        
+        if (certificates[certNumber]) {
+            alert('⚠️ Certificate number already exists! Use Edit to update.');
+            return;
+        }
+
+        certificates[certNumber] = {
+            name: studentName,
+            course: course,
+            grade: grade,
+            status: status
+        };
+
+        if (duration) {
+            certificates[certNumber].duration = duration;
+        }
+
+        saveCertificates(certificates);
+        clearForm();
+        loadCertificateList();
+        alert('✅ Certificate added successfully!');
+    }
+
+    // Delete certificate
+    function deleteCertificate(certNumber) {
+        if (confirm(`Are you sure you want to delete certificate ${certNumber}?`)) {
+            const certificates = getCertificates();
+            delete certificates[certNumber];
+            saveCertificates(certificates);
+            loadCertificateList();
+            alert('✅ Certificate deleted successfully!');
+        }
+    }
+
+    // Load certificate to form for editing
+    function editCertificate(certNumber) {
+        const certificates = getCertificates();
+        const cert = certificates[certNumber];
+
+        if (cert) {
+            document.getElementById('adminCertNumber').value = certNumber;
+            document.getElementById('adminStudentName').value = cert.name;
+            document.getElementById('adminCourse').value = cert.course;
+            document.getElementById('adminGrade').value = cert.grade;
+            document.getElementById('adminStatus').value = cert.status;
+            document.getElementById('adminDuration').value = cert.duration || '';
+
+            // Scroll to form
+            document.querySelector('.admin-section').scrollIntoView({ behavior: 'smooth' });
+
+            // Change button text to update
+            const addBtn = document.querySelector('.btn-primary');
+            addBtn.textContent = '✏️ Update Certificate';
+            addBtn.onclick = updateCertificate;
+        }
+    }
+
+    // Update existing certificate
+    function updateCertificate() {
+        const certNumber = document.getElementById('adminCertNumber').value.trim();
+        const studentName = document.getElementById('adminStudentName').value.trim();
+        const course = document.getElementById('adminCourse').value.trim();
+        const grade = document.getElementById('adminGrade').value.trim();
+        const status = document.getElementById('adminStatus').value.trim();
+        const duration = document.getElementById('adminDuration').value.trim();
+
+        if (!certNumber || !studentName || !course || !grade || !status) {
+            alert('⚠️ Please fill in all required fields');
+            return;
+        }
+
+        const certificates = getCertificates();
+        
+        certificates[certNumber] = {
+            name: studentName,
+            course: course,
+            grade: grade,
+            status: status
+        };
+
+        if (duration) {
+            certificates[certNumber].duration = duration;
+        }
+
+        saveCertificates(certificates);
+        clearForm();
+        loadCertificateList();
+        alert('✅ Certificate updated successfully!');
+    }
+
+    // Clear form
+    function clearForm() {
+        document.getElementById('adminCertNumber').value = '';
+        document.getElementById('adminStudentName').value = '';
+        document.getElementById('adminCourse').value = '';
+        document.getElementById('adminGrade').value = '';
+        document.getElementById('adminStatus').value = '';
+        document.getElementById('adminDuration').value = '';
+
+        const addBtn = document.querySelector('.btn-primary');
+        addBtn.textContent = '➕ Add Certificate';
+        addBtn.onclick = addCertificate;
+    }
+
+    // Load and display all certificates in table
+    function loadCertificateList() {
+        const certificates = getCertificates();
+        const listBody = document.getElementById('certificateList');
+        listBody.innerHTML = '';
+
+        if (Object.keys(certificates).length === 0) {
+            listBody.innerHTML = '<tr><td colspan="6" style="text-align:center; padding: 20px;">No certificates found. Add one to get started!</td></tr>';
+            return;
+        }
+
+        for (const [certNumber, cert] of Object.entries(certificates)) {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td><strong>${certNumber}</strong></td>
+                <td>${cert.name}</td>
+                <td>${cert.course}</td>
+                <td>${cert.grade}</td>
+                <td>${cert.status}</td>
+                <td>
+                    <button class="btn-edit" onclick="editCertificate('${certNumber}')">✏️ Edit</button>
+                    <button class="btn-delete" onclick="deleteCertificate('${certNumber}')">🗑️ Delete</button>
+                </td>
+            `;
+            listBody.appendChild(row);
+        }
+    }
+
+    // Check result (used in Verify Certificate tab)
     function checkResult() {
         let certNumber = document.getElementById("certNumber").value.trim();
         let resultDiv = document.getElementById("result");
@@ -756,6 +1053,8 @@
             resultDiv.innerHTML = `<p style="color:orange;">⚠️ Please enter a certificate number</p>`;
             return;
         }
+
+        const certificates = getCertificates();
 
         if (certificates[certNumber]) {
             let data = certificates[certNumber];
@@ -773,6 +1072,31 @@
         }
     }
 
+    // Show/hide tabs
+    function showTab(tabName) {
+        const tabContents = document.querySelectorAll('.tab-content');
+        tabContents.forEach(tab => {
+            tab.classList.remove('active');
+        });
+
+        const selectedTab = document.getElementById(tabName);
+        if (selectedTab) {
+            selectedTab.classList.add('active');
+        }
+
+        const resultBox = document.getElementById('result');
+        if (resultBox) {
+            resultBox.innerHTML = '';
+        }
+
+        // Load certificate list when admin tab is opened
+        if (tabName === 'admin') {
+            loadCertificateList();
+        }
+
+        window.scrollTo(0, 0);
+    }
+
     // Allow Enter key to verify certificate
     document.addEventListener('keypress', function(event) {
         if (event.key === 'Enter') {
@@ -781,6 +1105,12 @@
                 checkResult();
             }
         }
+    });
+
+    // Initialize database on page load
+    window.addEventListener('load', function() {
+        initializeDatabase();
+        loadCertificateList();
     });
 </script>
 
