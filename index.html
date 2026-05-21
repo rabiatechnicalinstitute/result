@@ -10,11 +10,39 @@ header{background:#0b3d91;color:#fff;padding:15px 30px;display:flex;justify-cont
 nav a{color:#fff;text-decoration:none;margin-left:15px;font-weight:bold}
 .hero{background:linear-gradient(to right,#0b3d91,#1565c0);color:#fff;text-align:center;padding:100px 20px}
 .hero h1{font-size:50px;margin-bottom:20px}
-.btn{display:inline-block;background:#ffd54f;color:#000;padding:14px 30px;border-radius:30px;text-decoration:none;font-weight:bold;margin-top:20px}
+.btn{display:inline-block;background:#ffd54f;color:#000;padding:14px 30px;border-radius:30px;text-decoration:none;font-weight:bold;margin-top:20px;cursor:pointer;border:none;font-size:16px}
+.btn:hover{background:#ffca28;transform:scale(1.05);transition:all 0.3s}
 .section{padding:60px 20px;max-width:1200px;margin:auto}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
 .card{background:#fff;padding:25px;border-radius:20px;box-shadow:0 5px 15px rgba(0,0,0,.1)}
 footer{background:#061b45;color:#fff;text-align:center;padding:30px 20px}
+
+/* Modal Styles */
+.modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);animation:fadeIn 0.3s}
+.modal-content{background-color:#fff;margin:5% auto;padding:40px;border-radius:20px;width:90%;max-width:600px;box-shadow:0 10px 40px rgba(0,0,0,0.3);animation:slideIn 0.3s}
+.modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;border-bottom:2px solid #0b3d91;padding-bottom:15px}
+.modal-header h2{color:#0b3d91;margin:0}
+.close-btn{background:none;border:none;font-size:28px;cursor:pointer;color:#666}
+.close-btn:hover{color:#000}
+
+/* Certificate Result Styles */
+.certificate-result{background:linear-gradient(135deg,#0b3d91,#1565c0);color:#fff;padding:25px;border-radius:15px;margin-top:20px}
+.certificate-result h3{margin-top:0;color:#ffd54f}
+.certificate-result p{margin:10px 0;font-size:16px}
+
+.not-found{color:#d32f2f;font-weight:bold;margin-top:15px;padding:15px;background:#ffebee;border-radius:10px}
+
+.verify-input{width:100%;padding:12px;margin-top:15px;border:2px solid #0b3d91;border-radius:10px;font-size:16px}
+.verify-input:focus{outline:none;border-color:#1565c0;box-shadow:0 0 5px rgba(11,61,145,0.3)}
+
+.verify-btn{margin-top:15px;padding:12px 20px;background:#0b3d91;color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:16px;font-weight:bold;width:100%;transition:background 0.3s}
+.verify-btn:hover{background:#1565c0}
+
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes slideIn{from{transform:translateY(-50px);opacity:0}to{transform:translateY(0);opacity:1}}
+
+.floating-btn{position:fixed;bottom:30px;right:30px;background:#ffd54f;color:#000;padding:15px 25px;border-radius:50px;cursor:pointer;font-weight:bold;box-shadow:0 5px 15px rgba(0,0,0,0.3);z-index:999;border:none;font-size:16px;transition:all 0.3s}
+.floating-btn:hover{background:#ffca28;transform:scale(1.1);box-shadow:0 8px 20px rgba(0,0,0,0.4)}
 </style>
 </head>
 <body>
@@ -27,11 +55,43 @@ footer{background:#061b45;color:#fff;text-align:center;padding:30px 20px}
 <a href="#contact">Contact</a>
 </nav>
 </header>
+
+<!-- Certificate Verification Modal -->
+<div id="certificateModal" class="modal">
+<div class="modal-content">
+<div class="modal-header">
+<h2>🔐 Certificate Verification</h2>
+<button class="close-btn" onclick="closeCertificateModal()">&times;</button>
+</div>
+<p style="color:#666;margin-bottom:20px">Enter your certificate number to verify your credentials:</p>
+<input id="certificateInput" type="text" placeholder="Enter Certificate Number (e.g., CERT/DIP/300622)" class="verify-input">
+<button onclick="verifyCertificate()" class="verify-btn">Verify Certificate</button>
+
+<div id="certificate-result" style="display:none">
+<div class="certificate-result">
+<h3>✓ Certificate Verified</h3>
+<p><strong>Name:</strong> <span id="studentName"></span></p>
+<p><strong>Course:</strong> <span id="studentCourse"></span></p>
+<p><strong>Certificate No:</strong> <span id="studentCertificate"></span></p>
+<p><strong>Status:</strong> Verified Successfully</p>
+</div>
+</div>
+
+<div id="not-found" class="not-found" style="display:none">
+❌ Certificate Not Found
+</div>
+</div>
+</div>
+
+<!-- Floating Certificate Button -->
+<button class="floating-btn" onclick="openCertificateModal()">🔐 Verify Certificate</button>
+
 <section class="hero">
 <h1>Build Your Future with Technical Education</h1>
 <p>Industry focused diploma programs for engineering and safety careers.</p>
 <a href="#courses" class="btn">Explore Courses</a>
 </section>
+
 <section class="section" id="courses">
 <h2 style="text-align:center;color:#0b3d91">Our Courses</h2><br>
 <div class="cards">
@@ -64,35 +124,51 @@ footer{background:#061b45;color:#fff;text-align:center;padding:30px 20px}
 </div>
 </div>
 </section>
+
 <section class="section" id="certificate">
 <div class="card">
-<h2>Certificate Verification</h2>
-<input id="certificateInput" type="text" placeholder="Enter Certificate Number" style="width:100%;padding:12px;margin-top:15px">
-<button onclick="verifyCertificate()" style="margin-top:15px;padding:12px 20px;background:#0b3d91;color:#fff;border:none;border-radius:10px;cursor:pointer">Verify</button>
-
-<div id="certificate-result" style="display:none;margin-top:25px;padding:20px;background:#f4f7fb;border-radius:15px;border:1px solid #ddd">
-<h3 style="color:#0b3d91;margin-bottom:15px">Certificate Verified</h3>
-<p><strong>Name:</strong> <span id="studentName"></span></p>
-<p><strong>Course:</strong> <span id="studentCourse"></span></p>
-<p><strong>Certificate No:</strong> <span id="studentCertificate"></span></p>
-<p><strong>Status:</strong> Verified Successfully</p>
-
-
-</div>
-
-<div id="not-found" style="display:none;margin-top:20px;color:red;font-weight:bold">
-Certificate Not Found
-</div>
+<h2 style="color:#0b3d91">Quick Access - Certificate Verification</h2>
+<p>Click the floating button in the bottom right corner to verify your certificate at any time.</p>
+<button onclick="openCertificateModal()" class="btn" style="background:#0b3d91;color:#fff">Open Verification Portal</button>
 </div>
 </section>
 
+<footer>
+<h3>Rabia Technical Institute</h3>
+<p>Kumar Basti, Mango, Jamshedpur, Jharkhand 831012, India</p>
+</footer>
+
 <script>
+// Open Certificate Modal
+function openCertificateModal() {
+  document.getElementById('certificateModal').style.display = 'block';
+  document.getElementById('certificateInput').focus();
+  // Clear previous results
+  document.getElementById('certificate-result').style.display = 'none';
+  document.getElementById('not-found').style.display = 'none';
+  document.getElementById('certificateInput').value = '';
+}
+
+// Close Certificate Modal
+function closeCertificateModal() {
+  document.getElementById('certificateModal').style.display = 'none';
+}
+
+// Close modal when clicking outside
+window.onclick = function(event) {
+  const modal = document.getElementById('certificateModal');
+  if (event.target === modal) {
+    modal.style.display = 'none';
+  }
+}
+
+// Verify Certificate Function
 function verifyCertificate() {
-  const certificateNumber = document.getElementById('certificateInput').value.trim();
+  const certificateNumber = document.getElementById('certificateInput').value.trim().toUpperCase();
 
   const certificates = {
     'CERT/DIP/300622': {
-      name: 'AFTAB ANWAR ',
+      name: 'AFTAB ANWAR',
       course: 'Diploma in Fire and Safety Engineering',
       certificate: 'CERT/DIP/300622'
     },
@@ -111,6 +187,11 @@ function verifyCertificate() {
   const resultBox = document.getElementById('certificate-result');
   const notFound = document.getElementById('not-found');
 
+  if (certificateNumber === '') {
+    alert('Please enter a certificate number');
+    return;
+  }
+
   if (certificates[certificateNumber]) {
     document.getElementById('studentName').innerText = certificates[certificateNumber].name;
     document.getElementById('studentCourse').innerText = certificates[certificateNumber].course;
@@ -123,10 +204,18 @@ function verifyCertificate() {
     notFound.style.display = 'block';
   }
 }
+
+// Allow Enter key to verify
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById('certificateInput').addEventListener('keypress', function(event) {
+    if (event.key === 'Enter') {
+      verifyCertificate();
+    }
+  });
+
+  // Auto-open modal on page load (optional - uncomment to enable)
+  // openCertificateModal();
+});
 </script>
-<footer>
-<h3>Rabia Technical Institute</h3>
-<p>Kumar Basti, Mango, Jamshedpur, Jharkhand 831012, India</p>
-</footer>
 </body>
-</html>`;
+</html>
