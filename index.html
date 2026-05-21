@@ -19,7 +19,8 @@ footer{background:#061b45;color:#fff;text-align:center;padding:30px 20px}
 
 /* Modal Styles */
 .modal{display:none;position:fixed;z-index:1000;left:0;top:0;width:100%;height:100%;background-color:rgba(0,0,0,0.5);animation:fadeIn 0.3s}
-.modal-content{background-color:#fff;margin:5% auto;padding:40px;border-radius:20px;width:90%;max-width:600px;box-shadow:0 10px 40px rgba(0,0,0,0.3);animation:slideIn 0.3s}
+.modal.show{display:flex;align-items:center;justify-content:center}
+.modal-content{background-color:#fff;padding:40px;border-radius:20px;width:90%;max-width:600px;box-shadow:0 10px 40px rgba(0,0,0,0.3);animation:slideIn 0.3s}
 .modal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;border-bottom:2px solid #0b3d91;padding-bottom:15px}
 .modal-header h2{color:#0b3d91;margin:0}
 .close-btn{background:none;border:none;font-size:28px;cursor:pointer;color:#666}
@@ -32,7 +33,7 @@ footer{background:#061b45;color:#fff;text-align:center;padding:30px 20px}
 
 .not-found{color:#d32f2f;font-weight:bold;margin-top:15px;padding:15px;background:#ffebee;border-radius:10px}
 
-.verify-input{width:100%;padding:12px;margin-top:15px;border:2px solid #0b3d91;border-radius:10px;font-size:16px}
+.verify-input{width:100%;padding:12px;margin-top:15px;border:2px solid #0b3d91;border-radius:10px;font-size:16px;box-sizing:border-box}
 .verify-input:focus{outline:none;border-color:#1565c0;box-shadow:0 0 5px rgba(11,61,145,0.3)}
 
 .verify-btn{margin-top:15px;padding:12px 20px;background:#0b3d91;color:#fff;border:none;border-radius:10px;cursor:pointer;font-size:16px;font-weight:bold;width:100%;transition:background 0.3s}
@@ -57,7 +58,7 @@ footer{background:#061b45;color:#fff;text-align:center;padding:30px 20px}
 </header>
 
 <!-- Certificate Verification Modal -->
-<div id="certificateModal" class="modal">
+<div id="certificateModal" class="modal show">
 <div class="modal-content">
 <div class="modal-header">
 <h2>🔐 Certificate Verification</h2>
@@ -141,7 +142,7 @@ footer{background:#061b45;color:#fff;text-align:center;padding:30px 20px}
 <script>
 // Open Certificate Modal
 function openCertificateModal() {
-  document.getElementById('certificateModal').style.display = 'block';
+  document.getElementById('certificateModal').classList.add('show');
   document.getElementById('certificateInput').focus();
   // Clear previous results
   document.getElementById('certificate-result').style.display = 'none';
@@ -151,14 +152,14 @@ function openCertificateModal() {
 
 // Close Certificate Modal
 function closeCertificateModal() {
-  document.getElementById('certificateModal').style.display = 'none';
+  document.getElementById('certificateModal').classList.remove('show');
 }
 
 // Close modal when clicking outside
 window.onclick = function(event) {
   const modal = document.getElementById('certificateModal');
   if (event.target === modal) {
-    modal.style.display = 'none';
+    modal.classList.remove('show');
   }
 }
 
@@ -213,8 +214,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 
-  // Auto-open modal on page load (optional - uncomment to enable)
-  // openCertificateModal();
+  // Auto-open modal on page load
+  openCertificateModal();
 });
 </script>
 </body>
